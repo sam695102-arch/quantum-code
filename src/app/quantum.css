@@ -1,0 +1,2337 @@
+:root {
+  --navy-deep: #0B1E4D;
+  --navy-mid: #142C6B;
+  --champagne: #E4C896;
+  --champagne-soft: #EFDDB6;
+  --ivory: #FAF8F3;
+  --ink: #10142B;
+  --ink-soft: #4B5170;
+  --line-on-navy: rgba(228, 200, 150, 0.22);
+  --line-on-ivory: rgba(16, 20, 43, 0.10);
+}
+
+.quantum-page {
+  font-family: var(--font-inter), sans-serif;
+  background: var(--ivory);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+}
+
+.quantum-page a {
+  color: inherit;
+}
+
+.quantum-page img,
+.quantum-page svg {
+  display: block;
+}
+
+.quantum-page .wrap {
+  max-width: 1180px;
+  margin: 0 auto !important;
+  padding: 0 32px;
+  width: 100%;
+}
+
+.quantum-page .wrap-narrow {
+  max-width: 760px;
+  margin: 0 auto !important;
+  padding: 0 32px;
+  width: 100%;
+}
+
+.quantum-page ::selection {
+  background: var(--champagne);
+  color: var(--ink);
+}
+
+/* Focus visibility */
+.quantum-page a:focus-visible,
+.quantum-page button:focus-visible {
+  outline: 2px solid var(--navy-mid);
+  outline-offset: 3px;
+}
+
+/* ---------- NAV ---------- */
+.quantum-page header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 248, 243, 0.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 76px;
+  position: relative;
+}
+
+.quantum-page .nav-left {
+  justify-self: start;
+  display: flex;
+}
+
+.quantum-page .nav-center {
+  justify-self: center;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.quantum-page .nav-right {
+  justify-self: end;
+  display: flex;
+  transition: opacity 0.4s ease;
+}
+
+.quantum-page .logo {
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%) scale(1);
+  transform-origin: center center;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.quantum-page header.scrolled .logo {
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.quantum-page header.scrolled .nav-center {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+}
+
+.quantum-page header.scrolled .nav-right {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.quantum-page .logo .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--champagne);
+  box-shadow: 0 0 0 3px rgba(228, 200, 150, 0.25);
+}
+
+.quantum-page .navlinks {
+  display: flex;
+  gap: 40px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.quantum-page .navlinks a {
+  text-decoration: none;
+  transition: color .15s ease;
+}
+
+.quantum-page .navlinks a:hover {
+  color: var(--navy-deep);
+}
+
+.quantum-page .nav-cta {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--navy-deep);
+  color: var(--ivory);
+  padding: 11px 22px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.quantum-page .nav-cta:hover {
+  background: var(--navy-mid);
+  transform: translateY(-1px);
+}
+
+.quantum-page .mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 0;
+}
+
+.quantum-page .mobile-cta {
+  display: none;
+}
+
+@media(max-width:1024px) {
+  .quantum-page .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .quantum-page .logo,
+  .quantum-page header.scrolled .logo {
+    position: static;
+    transform: none;
+    left: auto;
+    top: auto;
+  }
+
+  .quantum-page .desktop-cta,
+  .quantum-page .nav-right {
+    display: none;
+  }
+  
+  .quantum-page .mobile-cta {
+    display: inline-flex;
+    margin-top: 8px;
+  }
+  
+  .quantum-page .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .quantum-page .nav-center {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    background: var(--ivory);
+    padding: 24px 32px 32px 32px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--line-on-ivory);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .quantum-page .nav-center.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .quantum-page .navlinks {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    font-size: 16px;
+  }
+
+  .quantum-page header.mobile-open {
+    background: var(--ivory);
+  }
+}
+
+/* ---------- HERO ---------- */
+.quantum-page .hero {
+  position: relative;
+  background: radial-gradient(120% 140% at 15% 0%, var(--navy-mid) 0%, var(--navy-deep) 55%, #081638 100%);
+  color: var(--ivory);
+  overflow: hidden;
+  padding: 120px 0 108px;
+  isolation: isolate;
+}
+
+.quantum-page #quantum-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.quantum-page .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 70% at 78% 42%, transparent 0%, transparent 35%, rgba(8, 22, 56, 0.55) 78%, #081638 100%);
+}
+
+.quantum-page .orbit-field {
+  position: absolute;
+  top: 50%;
+  right: -160px;
+  transform: translateY(-50%);
+  width: 780px;
+  height: 780px;
+  pointer-events: none;
+}
+
+.quantum-page .orbit-field svg {
+  width: 100%;
+  height: 100%;
+}
+
+.quantum-page .orbit-ring {
+  fill: none;
+  stroke: var(--champagne);
+}
+
+.quantum-page .ring1 {
+  stroke-opacity: 0.18;
+  transform-origin: 390px 390px;
+  animation: spin 46s linear infinite;
+}
+
+.quantum-page .ring2 {
+  stroke-opacity: 0.28;
+  transform-origin: 390px 390px;
+  animation: spin 34s linear infinite reverse;
+}
+
+.quantum-page .ring3 {
+  stroke-opacity: 0.12;
+  transform-origin: 390px 390px;
+  animation: spin 60s linear infinite;
+}
+
+.quantum-page .qubit-node {
+  fill: var(--champagne);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .quantum-page .ring1,
+  .quantum-page .ring2,
+  .quantum-page .ring3 {
+    animation: none;
+  }
+}
+
+.quantum-page .eyebrow {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantum-page .eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--champagne);
+}
+
+.quantum-page .hero h1 {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(40px, 5.4vw, 74px);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  max-width: 820px;
+  color: var(--ivory);
+}
+
+.quantum-page .hero h1 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--champagne);
+}
+
+.quantum-page .hero p.lead {
+  position: relative;
+  z-index: 1;
+  margin-top: 28px;
+  max-width: 520px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(250, 248, 243, 0.72);
+  font-weight: 400;
+}
+
+.quantum-page .hero-actions {
+  position: relative;
+  z-index: 1;
+  margin-top: 44px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.quantum-page .btn-primary {
+  background: var(--champagne);
+  color: var(--navy-deep);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 15px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.quantum-page .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(228, 200, 150, 0.25);
+}
+
+.quantum-page .hero-actions .btn-primary {
+  background-color: #E8C376;
+  color: #0F1A3D;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+
+.quantum-page .hero-actions .btn-primary:hover {
+  background-color: #F0D28F;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(228, 200, 150, 0.25);
+}
+
+.quantum-page .btn-ghost {
+  color: var(--ivory);
+  font-weight: 500;
+  font-size: 14.5px;
+  padding: 15px 8px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(250, 248, 243, 0.35);
+  transition: border-color .15s ease;
+}
+
+.quantum-page .btn-ghost:hover {
+  border-color: var(--champagne);
+}
+
+.quantum-page .hero-meta {
+  position: relative;
+  z-index: 1;
+  margin-top: 88px;
+  display: flex;
+  gap: 56px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line-on-navy);
+  padding-top: 32px;
+}
+
+.quantum-page .hero-meta .item .num {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 30px;
+  color: var(--champagne);
+}
+
+.quantum-page .hero-meta .item .label {
+  margin-top: 4px;
+  font-size: 13px;
+  color: rgba(250, 248, 243, 0.6);
+  font-weight: 500;
+}
+
+/* ---------- SECTION SHARED ---------- */
+.quantum-page section {
+  padding: 104px 0;
+}
+
+.quantum-page .section-head {
+  max-width: 620px;
+  margin-bottom: 64px;
+}
+
+.quantum-page .kicker {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.quantum-page .section-head h2 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(28px, 3.4vw, 42px);
+  line-height: 1.16;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.quantum-page .section-head h2 em {
+  font-style: italic;
+  color: var(--navy-mid);
+}
+
+.quantum-page .section-head p {
+  margin-top: 18px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* ---------- PRACTICE (services) ---------- */
+.quantum-page .practice {
+  background: var(--ivory);
+}
+
+.quantum-page .practice-list {
+  border-top: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .practice-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  gap: 40px;
+  padding: 38px 0;
+  border-bottom: 1px solid var(--line-on-ivory);
+  align-items: start;
+  transition: background .2s ease;
+}
+
+.quantum-page .practice-row:hover {
+  background: rgba(11, 30, 77, 0.02);
+}
+
+.quantum-page .practice-row .idx {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 13px;
+  color: var(--champagne);
+  background: var(--navy-deep);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.quantum-page .practice-row h3 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--ink);
+}
+
+.quantum-page .practice-row p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+@media(max-width:760px) {
+  .quantum-page .practice-row {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .quantum-page .practice-row p {
+    grid-column: 2;
+    margin-top: 8px;
+  }
+}
+
+/* ---------- APPROACH (dark panel) ---------- */
+.quantum-page .approach {
+  background: var(--navy-deep);
+  color: var(--ivory);
+  position: relative;
+}
+
+.quantum-page .approach .kicker {
+  color: var(--champagne);
+}
+
+.quantum-page .approach .section-head h2 {
+  color: var(--ivory);
+}
+
+.quantum-page .approach .section-head h2 em {
+  color: var(--champagne);
+}
+
+.quantum-page .approach .section-head p {
+  color: rgba(250, 248, 243, 0.68);
+}
+
+.quantum-page .approach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line-on-navy);
+  border: 1px solid var(--line-on-navy);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.quantum-page .approach-card {
+  background: var(--navy-deep);
+  padding: 38px 34px;
+}
+
+.quantum-page .approach-card .mark {
+  font-family: var(--font-fraunces), serif;
+  font-style: italic;
+  font-size: 34px;
+  color: var(--champagne);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.quantum-page .approach-card h4 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--ivory);
+}
+
+.quantum-page .approach-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(250, 248, 243, 0.62);
+}
+
+@media(max-width:860px) {
+  .quantum-page .approach-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- WORK (case highlight) ---------- */
+.quantum-page .work {
+  background: var(--ivory);
+}
+
+.quantum-page .work-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line-on-ivory);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.quantum-page .work-visual {
+  background: linear-gradient(155deg, var(--navy-mid), var(--navy-deep));
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 360px;
+  position: relative;
+}
+
+.quantum-page .work-visual .tag {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  color: var(--champagne);
+  letter-spacing: 0.08em;
+}
+
+.quantum-page .work-visual blockquote {
+  font-family: var(--font-fraunces), serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ivory);
+  font-size: 24px;
+  line-height: 1.4;
+  margin-top: 24px;
+}
+
+.quantum-page .work-visual figcaption {
+  margin-top: 24px;
+  font-size: 13.5px;
+  color: rgba(250, 248, 243, 0.6);
+}
+
+.quantum-page .work-detail {
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+}
+
+.quantum-page .work-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  border-bottom: 1px solid var(--line-on-ivory);
+  padding-bottom: 18px;
+}
+
+.quantum-page .work-stat:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.quantum-page .work-stat .figure {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 32px;
+  color: var(--navy-deep);
+}
+
+.quantum-page .work-stat .desc {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  max-width: 220px;
+}
+
+@media(max-width:860px) {
+  .quantum-page .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quantum-page .work-visual,
+  .quantum-page .work-detail {
+    padding: 40px 28px;
+  }
+}
+
+/* ---------- CTA ---------- */
+.quantum-page .cta {
+  background: var(--ivory);
+}
+
+.quantum-page .cta-inner {
+  background: var(--navy-deep);
+  border-radius: 26px;
+  padding: 76px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.quantum-page .cta-inner::after {
+  content: '';
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px solid var(--line-on-navy);
+}
+
+.quantum-page .cta-inner h2 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(26px, 3vw, 38px);
+  color: var(--ivory);
+  max-width: 460px;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+
+.quantum-page .cta-inner h2 em {
+  font-style: italic;
+  color: var(--champagne);
+}
+
+.quantum-page .cta-actions {
+  display: flex;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+/* ---------- FOOTER ---------- */
+.quantum-page footer {
+  background: var(--ivory);
+  border-top: 1px solid var(--line-on-ivory);
+  padding: 48px 0;
+}
+
+.quantum-page .foot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.quantum-page .foot-links {
+  display: flex;
+  gap: 32px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+.quantum-page .foot-links a {
+  text-decoration: none;
+}
+
+.quantum-page .foot-links a:hover {
+  color: var(--navy-deep);
+}
+
+.quantum-page .copyright {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+/* ==================================================
+   GRAPHIC DESIGN SERVICE PAGE STYLES
+   ================================================== */
+/* ---------- BREADCRUMB ---------- */
+.quantum-page .breadcrumb {
+  padding: 22px 0 0;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+
+.quantum-page .breadcrumb a {
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.quantum-page .breadcrumb a:hover {
+  color: var(--navy-deep);
+}
+
+.quantum-page .breadcrumb span {
+  color: var(--champagne);
+  margin: 0 8px;
+}
+
+/* ---------- SERVICE HERO ---------- */
+.quantum-page .service-hero {
+  padding: 56px 0 88px;
+  position: relative;
+}
+
+.quantum-page .service-hero .kicker {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantum-page .service-hero .kicker::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--navy-mid);
+}
+
+.quantum-page .service-hero h1 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  max-width: 760px;
+  color: var(--ink);
+}
+
+.quantum-page .service-hero h1 em {
+  font-style: italic;
+  color: var(--navy-mid);
+}
+
+.quantum-page .service-hero p.lead {
+  margin-top: 26px;
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.quantum-page .service-hero-actions {
+  margin-top: 38px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.quantum-page .btn-primary {
+  background: var(--navy-deep);
+  color: var(--ivory);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 15px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.quantum-page .btn-primary:hover {
+  background: var(--navy-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(11, 30, 77, 0.18);
+}
+
+.quantum-page .btn-ghost-dark {
+  color: var(--navy-deep);
+  font-weight: 500;
+  font-size: 14.5px;
+  padding: 15px 8px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-on-ivory);
+  transition: border-color .15s ease;
+}
+
+.quantum-page .btn-ghost-dark:hover {
+  border-color: var(--navy-deep);
+}
+
+.quantum-page .btn-champagne {
+  background: var(--champagne);
+  color: var(--navy-deep);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 15px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.quantum-page .btn-champagne:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(228, 200, 150, 0.25);
+}
+
+.quantum-page .btn-ghost-light {
+  color: var(--ivory);
+  font-weight: 500;
+  font-size: 14.5px;
+  padding: 15px 8px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(250, 248, 243, 0.35);
+  transition: border-color .15s ease;
+}
+
+.quantum-page .btn-ghost-light:hover {
+  border-color: var(--champagne);
+}
+
+.quantum-page .service-meta-strip {
+  margin-top: 72px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line-on-ivory);
+  border-bottom: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .service-meta-strip .cell {
+  padding: 22px 28px;
+  border-left: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .service-meta-strip .cell:first-child {
+  border-left: none;
+}
+
+.quantum-page .service-meta-strip .cell .label {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.quantum-page .service-meta-strip .cell .val {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--navy-deep);
+}
+
+@media(max-width:760px) {
+  .quantum-page .service-meta-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quantum-page .service-meta-strip .cell:nth-child(2n+1) {
+    border-left: none;
+  }
+
+  .quantum-page .service-meta-strip .cell:nth-child(n+3) {
+    border-top: 1px solid var(--line-on-ivory);
+  }
+}
+
+/* ---------- SECTION SHARED (Block) ---------- */
+.quantum-page section.block {
+  padding: 96px 0;
+}
+
+.quantum-page .kicker-block {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* ---------- WHAT'S INCLUDED ---------- */
+.quantum-page .included {
+  background: var(--navy-deep);
+  color: var(--ivory);
+}
+
+.quantum-page .included .kicker-block {
+  color: var(--champagne);
+}
+
+.quantum-page .included .section-head h2 {
+  color: var(--ivory);
+}
+
+.quantum-page .included .section-head h2 em {
+  color: var(--champagne);
+}
+
+.quantum-page .included .section-head p {
+  color: rgba(250, 248, 243, 0.68);
+}
+
+.quantum-page .included-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line-on-navy);
+  border: 1px solid var(--line-on-navy);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.quantum-page .included-card {
+  background: var(--navy-deep);
+  padding: 34px 32px;
+}
+
+.quantum-page .included-card .idx {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  color: var(--champagne);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.quantum-page .included-card h4 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--ivory);
+}
+
+.quantum-page .included-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(250, 248, 243, 0.62);
+}
+
+@media(max-width:760px) {
+  .quantum-page .included-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- PROCESS ---------- */
+.quantum-page .process {
+  background: var(--ivory);
+}
+
+.quantum-page .process-list {
+  border-top: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .process-row {
+  display: grid;
+  grid-template-columns: 80px 200px 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line-on-ivory);
+  align-items: baseline;
+}
+
+.quantum-page .process-row .step-num {
+  font-family: var(--font-fraunces), serif;
+  font-style: italic;
+  font-size: 26px;
+  color: var(--champagne);
+}
+
+.quantum-page .process-row h4 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.quantum-page .process-row p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+@media(max-width:760px) {
+  .quantum-page .process-row {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .quantum-page .process-row h4 {
+    grid-column: 2;
+  }
+
+  .quantum-page .process-row p {
+    grid-column: 1/-1;
+    margin-top: 8px;
+  }
+}
+
+
+
+/* ---------- FAQ ---------- */
+.quantum-page .faq {
+  background: var(--ivory);
+}
+
+.quantum-page .faq-list {
+  border-top: 1px solid var(--line-on-ivory);
+  max-width: 760px;
+}
+
+.quantum-page .faq-item {
+  border-bottom: 1px solid var(--line-on-ivory);
+  padding: 26px 0;
+}
+
+.quantum-page .faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--ink);
+}
+
+.quantum-page .faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.quantum-page .faq-item summary .plus {
+  font-family: var(--font-jetbrains-mono), monospace;
+  color: var(--navy-mid);
+  font-size: 18px;
+  transition: transform .2s ease;
+}
+
+.quantum-page .faq-item[open] summary .plus {
+  transform: rotate(45deg);
+}
+
+.quantum-page .faq-item p {
+  margin-top: 16px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 600px;
+}
+
+
+/* ==================================================
+   SERVICES OVERVIEW PAGE STYLES
+   ================================================== */
+/* ---------- HERO ---------- */
+.quantum-page .services-hero {
+  padding: 56px 0 72px;
+}
+
+.quantum-page .services-hero .kicker {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantum-page .services-hero .kicker::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--navy-mid);
+}
+
+.quantum-page .services-hero h1 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(38px, 5vw, 60px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 760px;
+  color: var(--ink);
+}
+
+.quantum-page .services-hero h1 em {
+  font-style: italic;
+  color: var(--navy-mid);
+}
+
+.quantum-page .services-hero p.lead {
+  margin-top: 24px;
+  max-width: 580px;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* ---------- SERVICES LIST ---------- */
+.quantum-page .services-list-section {
+  padding: 0 0 96px;
+}
+
+.quantum-page .service-row {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 38px 0;
+  border-bottom: 1px solid var(--line-on-ivory);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background .2s ease;
+}
+
+.quantum-page .services-list-section .service-row:first-of-type {
+  border-top: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .service-row:hover {
+  background: rgba(11, 30, 77, 0.02);
+}
+
+.quantum-page .service-row .idx {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 13px;
+  color: var(--champagne);
+  background: var(--navy-deep);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.quantum-page .service-row .content h3 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  transition: color .15s ease;
+}
+
+.quantum-page .service-row:hover .content h3 {
+  color: var(--navy-mid);
+}
+
+.quantum-page .service-row .content p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 560px;
+}
+
+.quantum-page .service-row .tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.quantum-page .service-row .tag {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  color: var(--navy-mid);
+  background: rgba(11, 30, 77, 0.05);
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+.quantum-page .service-row .arrow {
+  font-family: var(--font-fraunces), serif;
+  font-style: italic;
+  font-size: 28px;
+  color: var(--navy-mid);
+  transition: transform .2s ease;
+  justify-self: end;
+}
+
+.quantum-page .service-row:hover .arrow {
+  transform: translateX(6px);
+}
+
+@media(max-width:760px) {
+  .quantum-page .service-row {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .quantum-page .service-row .arrow {
+    display: none;
+  }
+}
+
+/* ---------- WHY US ---------- */
+.quantum-page .why {
+  background: var(--navy-deep);
+  color: var(--ivory);
+}
+
+.quantum-page .why .kicker-block {
+  color: var(--champagne);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.quantum-page .why .section-head h2 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(26px, 3.2vw, 38px);
+  line-height: 1.18;
+  color: var(--ivory);
+  letter-spacing: -0.01em;
+}
+
+.quantum-page .why .section-head h2 em {
+  font-style: italic;
+  color: var(--champagne);
+}
+
+.quantum-page .why .section-head p {
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(250, 248, 243, 0.68);
+  max-width: 600px;
+}
+
+.quantum-page .why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line-on-navy);
+  border: 1px solid var(--line-on-navy);
+  border-radius: 18px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+
+.quantum-page .why-card {
+  background: var(--navy-deep);
+  padding: 34px 30px;
+}
+
+.quantum-page .why-card .num {
+  font-family: var(--font-fraunces), serif;
+  font-style: italic;
+  font-size: 30px;
+  color: var(--champagne);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.quantum-page .why-card h4 {
+  font-size: 16.5px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--ivory);
+}
+
+.quantum-page .why-card p {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: rgba(250, 248, 243, 0.62);
+}
+
+@media(max-width:860px) {
+  .quantum-page .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ---------- STACK STRIP ---------- */
+.quantum-page .stack {
+  background: var(--ivory);
+}
+
+.quantum-page .stack-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  border-top: 1px solid var(--line-on-ivory);
+  padding-top: 36px;
+}
+
+.quantum-page .stack-pill {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12.5px;
+  color: var(--navy-deep);
+  background: rgba(11, 30, 77, 0.05);
+  border: 1px solid var(--line-on-ivory);
+  padding: 9px 16px;
+  border-radius: 100px;
+}
+
+/* ---------- KPI STRIP ---------- */
+.quantum-page .kpi {
+  background: var(--ivory);
+  padding-top: 0;
+}
+
+.quantum-page .kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .kpi-cell {
+  padding: 32px 28px;
+  border-left: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .kpi-cell:first-child {
+  border-left: none;
+}
+
+.quantum-page .kpi-cell .num {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 36px;
+  color: var(--navy-deep);
+}
+
+.quantum-page .kpi-cell .desc {
+  margin-top: 8px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+@media(max-width:760px) {
+  .quantum-page .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quantum-page .kpi-cell:nth-child(2n+1) {
+    border-left: none;
+  }
+
+  .quantum-page .kpi-cell:nth-child(n+3) {
+    border-top: 1px solid var(--line-on-ivory);
+  }
+}
+
+/* ---------- ABOUT HERO ---------- */
+.quantum-page .about-hero {
+  padding: 56px 0 88px;
+}
+
+.quantum-page .about-hero .kicker {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantum-page .about-hero .kicker::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--navy-mid);
+}
+
+.quantum-page .about-hero h1 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 820px;
+  color: var(--ink);
+}
+
+.quantum-page .about-hero h1 em {
+  font-style: italic;
+  color: var(--navy-mid);
+}
+
+.quantum-page .about-hero p.lead {
+  margin-top: 26px;
+  max-width: 600px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* ---------- SECTION SHARED ---------- */
+.quantum-page section.block {
+  padding: 96px 0;
+}
+
+.quantum-page .section-head {
+  max-width: 620px;
+  margin-bottom: 56px;
+}
+
+.quantum-page .kicker-block {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.quantum-page .section-head h2 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(26px, 3.2vw, 38px);
+  line-height: 1.18;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.quantum-page .section-head h2 em {
+  font-style: italic;
+  color: var(--navy-mid);
+}
+
+.quantum-page .section-head p {
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* ---------- STORY (two column) ---------- */
+.quantum-page .story {
+  background: var(--ivory);
+}
+
+.quantum-page .story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.quantum-page .story-copy p {
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+
+.quantum-page .story-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.quantum-page .story-copy strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.quantum-page .story-quote {
+  background: var(--navy-deep);
+  border-radius: 20px;
+  padding: 44px 38px;
+  color: var(--ivory);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 260px;
+}
+
+.quantum-page .story-quote .mark {
+  font-family: var(--font-fraunces), serif;
+  font-style: italic;
+  font-size: 40px;
+  color: var(--champagne);
+  margin-bottom: 12px;
+}
+
+.quantum-page .story-quote p {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--ivory);
+}
+
+.quantum-page .story-quote figcaption {
+  margin-top: 20px;
+  font-size: 13px;
+  color: rgba(250, 248, 243, 0.6);
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+@media(max-width:860px) {
+  .quantum-page .story-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- VALUES ---------- */
+.quantum-page .values {
+  background: var(--navy-deep);
+  color: var(--ivory);
+}
+
+.quantum-page .values .kicker-block {
+  color: var(--champagne);
+}
+
+.quantum-page .values .section-head h2 {
+  color: var(--ivory);
+}
+
+.quantum-page .values .section-head h2 em {
+  color: var(--champagne);
+}
+
+.quantum-page .values .section-head p {
+  color: rgba(250, 248, 243, 0.68);
+}
+
+.quantum-page .values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line-on-navy);
+  border: 1px solid var(--line-on-navy);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.quantum-page .value-card {
+  background: var(--navy-deep);
+  padding: 38px 32px;
+}
+
+.quantum-page .value-card .idx {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  color: var(--champagne);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.quantum-page .value-card h4 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--ivory);
+}
+
+.quantum-page .value-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(250, 248, 243, 0.62);
+}
+
+@media(max-width:860px) {
+  .quantum-page .values-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- STATS STRIP ---------- */
+.quantum-page .stats {
+  background: var(--ivory);
+  padding-top: 0;
+}
+
+.quantum-page .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .stats-cell {
+  padding: 32px 28px;
+  border-left: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .stats-cell:first-child {
+  border-left: none;
+}
+
+.quantum-page .stats-cell .num {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 36px;
+  color: var(--navy-deep);
+}
+
+.quantum-page .stats-cell .desc {
+  margin-top: 8px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+@media(max-width:760px) {
+  .quantum-page .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quantum-page .stats-cell:nth-child(2n+1) {
+    border-left: none;
+  }
+
+  .quantum-page .stats-cell:nth-child(n+3) {
+    border-top: 1px solid var(--line-on-ivory);
+  }
+}
+
+
+
+/* ---------- CONTACT ---------- */
+.quantum-page .contact {
+  background: var(--ivory);
+}
+
+.quantum-page .contact-panel {
+  background: var(--navy-deep);
+  border-radius: 26px;
+  padding: 64px;
+  color: var(--ivory);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.quantum-page .contact-panel::after {
+  content: '';
+  position: absolute;
+  right: -60px;
+  bottom: -60px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 1px solid var(--line-on-navy);
+}
+
+.quantum-page .contact-copy h2 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+
+.quantum-page .contact-copy h2 em {
+  font-style: italic;
+  color: var(--champagne);
+}
+
+.quantum-page .contact-copy p {
+  margin-top: 18px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(250, 248, 243, 0.68);
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+}
+
+.quantum-page .contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.quantum-page .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.quantum-page .contact-item .icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(228, 200, 150, 0.12);
+  border: 1px solid var(--line-on-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quantum-page .contact-item .icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.quantum-page .contact-item .label {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 243, 0.55);
+}
+
+.quantum-page .contact-item .val {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--ivory);
+  margin-top: 2px;
+}
+
+.quantum-page .contact-item a.val {
+  text-decoration: none;
+}
+
+.quantum-page .contact-item a.val:hover {
+  color: var(--champagne);
+}
+
+@media(max-width:860px) {
+  .quantum-page .contact-panel {
+    grid-template-columns: 1fr;
+    padding: 44px 32px;
+  }
+}
+
+/* ---------- CONTACT PAGE ---------- */
+.quantum-page .contact-hero {
+  padding: 56px 0 24px;
+}
+
+.quantum-page .contact-hero .kicker {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantum-page .contact-hero .kicker::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--navy-mid);
+}
+
+.quantum-page .contact-hero h1 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(36px, 4.6vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 700px;
+  color: var(--ink);
+}
+
+.quantum-page .contact-hero h1 em {
+  font-style: italic;
+  color: var(--navy-mid);
+}
+
+.quantum-page .contact-hero p.lead {
+  margin-top: 22px;
+  max-width: 560px;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.quantum-page .contact-main {
+  padding: 56px 0 100px;
+}
+
+.quantum-page .contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* form */
+.quantum-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.quantum-page .field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.quantum-page label {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.quantum-page input,
+.quantum-page textarea,
+.quantum-page select {
+  width: 100%;
+  font-family: var(--font-inter);
+  font-size: 15px;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line-on-ivory);
+  padding: 10px 2px;
+  transition: border-color .15s ease;
+}
+
+.quantum-page input:focus,
+.quantum-page textarea:focus,
+.quantum-page select:focus {
+  border-bottom-color: var(--navy-deep);
+  outline: none;
+}
+
+.quantum-page textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.quantum-page select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5170' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  background-size: 16px;
+}
+
+.quantum-page .submit-btn {
+  align-self: flex-start;
+  margin-top: 10px;
+  background: var(--navy-deep);
+  color: var(--ivory);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 15px 30px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.quantum-page .submit-btn:hover {
+  background: var(--navy-mid);
+  transform: translateY(-2px);
+}
+
+.quantum-page .form-note {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin-top: -6px;
+}
+
+/* side panel */
+.quantum-page .side-panel {
+  background: var(--navy-deep);
+  border-radius: 22px;
+  padding: 44px 38px;
+  color: var(--ivory);
+  position: relative;
+  overflow: hidden;
+}
+
+.quantum-page .side-panel::after {
+  content: '';
+  position: absolute;
+  right: -50px;
+  bottom: -50px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  border: 1px solid var(--line-on-navy);
+}
+
+.quantum-page .side-panel h3 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 22px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.quantum-page .hours-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: rgba(250, 248, 243, 0.65);
+  padding: 10px 0;
+  border-top: 1px solid var(--line-on-navy);
+  position: relative;
+  z-index: 1;
+}
+
+.quantum-page .hours-row:first-of-type {
+  margin-top: 8px;
+}
+
+.quantum-page .hours-row .day {
+  color: rgba(250, 248, 243, 0.85);
+}
+
+/* response time strip */
+.quantum-page .response-strip {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .response-cell {
+  padding: 26px 24px;
+  border-left: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .response-cell:first-child {
+  border-left: none;
+}
+
+.quantum-page .response-cell .val {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--navy-deep);
+}
+
+.quantum-page .response-cell .desc {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+@media(max-width:860px) {
+  .quantum-page .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quantum-page .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .quantum-page .response-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .quantum-page .response-cell {
+    border-left: none;
+    border-top: 1px solid var(--line-on-ivory);
+    padding-left: 0;
+  }
+
+  .quantum-page .response-cell:first-child {
+    border-top: none;
+  }
+}
+
+/* ---------- LEGAL PAGES ---------- */
+.quantum-page .breadcrumb {
+  padding: 22px 0 0;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.quantum-page .breadcrumb a {
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.quantum-page .breadcrumb a:hover {
+  color: var(--navy-deep);
+}
+
+.quantum-page .breadcrumb span {
+  color: var(--champagne);
+  margin: 0 8px;
+}
+
+.quantum-page .legal-hero {
+  padding: 56px 0 40px;
+}
+
+.quantum-page .legal-hero .kicker {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantum-page .legal-hero .kicker::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--navy-mid);
+}
+
+.quantum-page .legal-hero h1 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.quantum-page .legal-hero .updated {
+  margin-top: 18px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.quantum-page .legal-body {
+  padding: 24px 0 96px;
+}
+
+.quantum-page .legal-body h2 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--ink);
+  margin: 44px 0 14px;
+}
+
+.quantum-page .legal-body h2:first-child {
+  margin-top: 0;
+}
+
+.quantum-page .legal-body p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+
+.quantum-page .legal-body ul {
+  margin: 14px 0 14px 22px;
+}
+
+.quantum-page .legal-body li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.quantum-page .legal-body strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.quantum-page .toc {
+  border: 1px solid var(--line-on-ivory);
+  border-radius: 16px;
+  padding: 28px 30px;
+  margin-bottom: 8px;
+}
+
+.quantum-page .toc .label {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+
+.quantum-page .toc ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.quantum-page .toc li {
+  font-size: 14px;
+  line-height: 2;
+}
+
+.quantum-page .toc a {
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.quantum-page .toc a:hover {
+  color: var(--navy-mid);
+}
+
+.quantum-page .contact-box {
+  background: var(--navy-deep);
+  border-radius: 18px;
+  padding: 32px 34px;
+  margin-top: 44px;
+  color: var(--ivory);
+}
+
+.quantum-page .contact-box p {
+  color: rgba(250, 248, 243, 0.75);
+}
+
+.quantum-page .contact-box a {
+  color: var(--champagne);
+  text-decoration: none;
+}
+
+.quantum-page .contact-box a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- MOBILE RESPONSIVENESS (Global Fixes) ---------- */
+@media (max-width: 860px) {
+  /* Grids */
+  .quantum-page .practice-row,
+  .quantum-page .work-grid,
+  .quantum-page .service-meta-strip,
+  .quantum-page .included-grid,
+  .quantum-page .process-row,
+  .quantum-page .service-row,
+  .quantum-page .why-grid,
+  .quantum-page .kpi-grid,
+  .quantum-page .story-grid,
+  .quantum-page .values-grid,
+  .quantum-page .stats-grid,
+  .quantum-page .contact-panel,
+  .quantum-page .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Flex Layouts */
+  .quantum-page .field-row,
+  .quantum-page .response-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Specific Adjustments */
+  .quantum-page .practice-row {
+    padding: 24px 0;
+  }
+  
+  .quantum-page .work-visual,
+  .quantum-page .work-detail,
+  .quantum-page .contact-info,
+  .quantum-page .contact-form-area {
+    padding: 32px;
+  }
+  
+  /* Large Section Paddings */
+  .quantum-page .hero,
+  .quantum-page .contact-hero,
+  .quantum-page .about-hero {
+    padding: 60px 0 40px;
+  }
+  
+  /* Section Spacing */
+  .quantum-page .section-head {
+    margin-bottom: 32px;
+  }
+
+  .quantum-page .contact-main {
+    padding: 40px 0 80px;
+  }
+  
+  /* Forms */
+  .quantum-page .field-row > div {
+    width: 100%;
+  }
+
+  .quantum-page input,
+  .quantum-page textarea,
+  .quantum-page select {
+    width: 100%;
+  }
+  
+  /* Stats visual sizing */
+  .quantum-page .stat h3 {
+    font-size: 40px;
+  }
+}
