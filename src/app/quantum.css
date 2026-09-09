@@ -597,6 +597,7 @@
   display: block;
 }
 
+.quantum-page .approach-card h3,
 .quantum-page .approach-card h4 {
   font-size: 17px;
   font-weight: 600;
@@ -2333,5 +2334,559 @@
   /* Stats visual sizing */
   .quantum-page .stat h3 {
     font-size: 40px;
+  }
+}
+
+/* ==================================================
+   SELECTED WORK (Featured Client Projects Showcase)
+   ================================================== */
+.quantum-page .selected-work {
+  background: var(--ivory);
+  padding: 120px 0;
+  border-top: 1px solid var(--line-on-ivory);
+}
+
+.quantum-page .selected-work-head {
+  max-width: 680px;
+  margin-bottom: 72px;
+}
+
+.quantum-page .selected-work-head h2 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: clamp(30px, 3.8vw, 46px);
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+}
+
+.quantum-page .selected-work-head h2 em {
+  font-style: italic;
+  color: var(--navy-mid);
+}
+
+.quantum-page .selected-work-head p {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.quantum-page .project-showcase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 104px;
+}
+
+/* Base Project Card */
+.quantum-page .project-card {
+  position: relative;
+  width: 100%;
+}
+
+/* Minimal Browser Frame */
+.quantum-page .project-browser-frame {
+  display: block;
+  background: #FFFFFF;
+  border: 1px solid rgba(16, 20, 43, 0.12);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px -12px rgba(11, 30, 77, 0.09), 0 4px 12px -2px rgba(11, 30, 77, 0.04);
+  text-decoration: none;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+  position: relative;
+}
+
+.quantum-page .browser-chrome {
+  height: 40px;
+  background: #F3F1EC;
+  border-bottom: 1px solid rgba(16, 20, 43, 0.08);
+  display: grid;
+  grid-template-columns: 72px 1fr 72px;
+  align-items: center;
+  padding: 0 16px;
+  user-select: none;
+}
+
+.quantum-page .browser-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quantum-page .browser-dots .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.quantum-page .browser-dots .dot-close {
+  background: #E87A70;
+  opacity: 0.85;
+}
+
+.quantum-page .browser-dots .dot-min {
+  background: #E5B853;
+  opacity: 0.85;
+}
+
+.quantum-page .browser-dots .dot-max {
+  background: #64C27D;
+  opacity: 0.85;
+}
+
+.quantum-page .browser-address {
+  justify-self: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(16, 20, 43, 0.09);
+  border-radius: 100px;
+  padding: 3px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  max-width: 260px;
+}
+
+.quantum-page .browser-address .lock-icon {
+  color: #5A6275;
+  flex-shrink: 0;
+}
+
+.quantum-page .browser-viewport {
+  position: relative;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+.quantum-page .project-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9.2;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Card Hover Interactions */
+.quantum-page .project-card:hover .project-browser-frame {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 56px -12px rgba(11, 30, 77, 0.16), 0 8px 24px -4px rgba(11, 30, 77, 0.07);
+  border-color: rgba(20, 44, 107, 0.22);
+}
+
+.quantum-page .project-card:hover .project-img {
+  transform: scale(1.018);
+}
+
+.quantum-page .project-card:hover .project-title-link {
+  color: var(--navy-mid);
+}
+
+.quantum-page .project-card:hover .project-live-btn .arrow {
+  transform: translate(4px, -4px);
+}
+
+/* Project Info Content */
+.quantum-page .project-meta-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.quantum-page .project-idx {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--navy-deep);
+  background: var(--champagne-soft);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.quantum-page .project-divider {
+  color: var(--ink-soft);
+  opacity: 0.4;
+  font-size: 12px;
+}
+
+.quantum-page .project-cat {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #383F60;
+  font-weight: 600;
+}
+
+.quantum-page .project-title {
+  font-family: var(--font-fraunces), serif;
+  font-size: clamp(26px, 2.5vw, 36px);
+  font-weight: 500;
+  line-height: 1.18;
+  color: var(--ink);
+  margin-bottom: 16px;
+  letter-spacing: -0.015em;
+}
+
+.quantum-page .project-title-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.quantum-page .project-desc {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+
+.quantum-page .project-services {
+  margin-bottom: 28px;
+  border-top: 1px solid var(--line-on-ivory);
+  padding-top: 16px;
+}
+
+.quantum-page .services-label {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #2F3654;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.quantum-page .services-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quantum-page .service-tag {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12.5px;
+  color: var(--navy-deep);
+  background: rgba(11, 30, 77, 0.04);
+  border: 1px solid rgba(11, 30, 77, 0.08);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-weight: 500;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.quantum-page .project-card:hover .service-tag {
+  border-color: rgba(20, 44, 107, 0.16);
+}
+
+.quantum-page .project-live-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy-deep);
+  text-decoration: none;
+  border-bottom: 2px solid var(--navy-mid);
+  padding-bottom: 6px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.quantum-page .project-live-btn:hover {
+  color: var(--navy-mid);
+  border-color: var(--champagne);
+}
+
+.quantum-page .project-live-btn .arrow {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  font-size: 13.5px;
+  line-height: 1;
+}
+
+/* -------------------------------------------
+   LAYOUT VARIANT 01: Visual Left / Info Right
+   ------------------------------------------- */
+.quantum-page .layout-visual-left {
+  display: grid;
+  grid-template-columns: 1.62fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* -------------------------------------------
+   LAYOUT VARIANT 02: Info Left / Visual Right
+   ------------------------------------------- */
+.quantum-page .layout-visual-right {
+  display: grid;
+  grid-template-columns: 1fr 1.62fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.quantum-page .layout-visual-right .project-visual-wrapper {
+  order: 2;
+}
+
+.quantum-page .layout-visual-right .project-info-wrapper {
+  order: 1;
+}
+
+/* -------------------------------------------
+   LAYOUT VARIANT 03: Full-Width Grand Showcase
+   ------------------------------------------- */
+.quantum-page .layout-full-width {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.quantum-page .layout-full-width .project-img {
+  aspect-ratio: 16 / 8.6;
+}
+
+.quantum-page .layout-full-width .project-info-wrapper {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: start;
+  border-top: 1px solid var(--line-on-ivory);
+  padding-top: 32px;
+}
+
+.quantum-page .layout-full-width .project-services {
+  border-top: none;
+  padding-top: 0;
+}
+
+/* -------------------------------------------
+   LAYOUT VARIANT 04: Asymmetric Layered Offset
+   ------------------------------------------- */
+.quantum-page .layout-offset {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+}
+
+.quantum-page .layout-offset .project-info-wrapper {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(16, 20, 43, 0.08);
+  border-radius: 16px;
+  padding: 40px 36px;
+  box-shadow: 0 10px 30px -10px rgba(11, 30, 77, 0.05);
+}
+
+/* -------------------------------------------
+   TRUST BANNER & TRANSITION CTA
+   ------------------------------------------- */
+.quantum-page .trust-banner {
+  margin-top: 110px;
+  background: var(--navy-deep);
+  border-radius: 22px;
+  padding: 60px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  color: var(--ivory);
+  border: 1px solid var(--line-on-navy);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 48px -12px rgba(11, 30, 77, 0.25);
+}
+
+.quantum-page .trust-banner::after {
+  content: '';
+  position: absolute;
+  right: -50px;
+  top: -50px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px solid var(--line-on-navy);
+  pointer-events: none;
+}
+
+.quantum-page .trust-copy {
+  max-width: 620px;
+  position: relative;
+  z-index: 1;
+}
+
+.quantum-page .trust-statement {
+  font-family: var(--font-fraunces), serif;
+  font-size: clamp(20px, 2.2vw, 27px);
+  line-height: 1.35;
+  font-weight: 400;
+  color: rgba(250, 248, 243, 0.88);
+  margin: 0;
+}
+
+.quantum-page .trust-highlight {
+  color: var(--champagne);
+  font-style: italic;
+  display: block;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.quantum-page .trust-action {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.quantum-page .trust-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  letter-spacing: 0.08em;
+  padding: 16px 32px;
+}
+
+.quantum-page .trust-cta-btn .arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-size: 14px;
+}
+
+.quantum-page .trust-cta-btn:hover .arrow {
+  transform: translate(3px, -3px);
+}
+
+/* -------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   ------------------------------------------- */
+@media (max-width: 1024px) {
+  .quantum-page .selected-work {
+    padding: 90px 0;
+  }
+
+  .quantum-page .project-showcase-list {
+    gap: 80px;
+  }
+
+  .quantum-page .layout-visual-left,
+  .quantum-page .layout-offset {
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+  }
+
+  .quantum-page .layout-visual-right {
+    grid-template-columns: 1fr 1.3fr;
+    gap: 40px;
+  }
+
+  .quantum-page .layout-offset .project-info-wrapper {
+    padding: 32px 28px;
+  }
+
+  .quantum-page .trust-banner {
+    padding: 48px 40px;
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .quantum-page .selected-work {
+    padding: 70px 0;
+  }
+
+  .quantum-page .selected-work-head {
+    margin-bottom: 48px;
+  }
+
+  .quantum-page .project-showcase-list {
+    gap: 64px;
+  }
+
+  /* Force clean vertical sequence on mobile */
+  .quantum-page .layout-visual-left,
+  .quantum-page .layout-visual-right,
+  .quantum-page .layout-offset {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .quantum-page .layout-visual-right .project-visual-wrapper {
+    order: 1;
+  }
+
+  .quantum-page .layout-visual-right .project-info-wrapper {
+    order: 2;
+  }
+
+  .quantum-page .layout-full-width .project-info-wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 24px;
+  }
+
+  .quantum-page .layout-offset .project-info-wrapper {
+    padding: 28px 22px;
+  }
+
+  .quantum-page .browser-chrome {
+    height: 36px;
+    padding: 0 12px;
+    grid-template-columns: 54px 1fr 10px;
+  }
+
+  .quantum-page .browser-address {
+    font-size: 10.5px;
+    padding: 2px 10px;
+    max-width: 200px;
+  }
+
+  .quantum-page .project-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .quantum-page .project-desc {
+    font-size: 14.5px;
+    margin-bottom: 20px;
+  }
+
+  .quantum-page .trust-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 38px 28px;
+    gap: 28px;
+    margin-top: 64px;
+  }
+
+  .quantum-page .trust-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .quantum-page .project-browser-frame,
+  .quantum-page .project-img,
+  .quantum-page .project-live-btn .arrow,
+  .quantum-page .trust-cta-btn .arrow {
+    transition: none !important;
+    transform: none !important;
   }
 }
